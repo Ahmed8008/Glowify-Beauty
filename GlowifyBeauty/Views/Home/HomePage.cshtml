@@ -1,0 +1,565 @@
+﻿@model  GlowifyBeauty.Models.HomePageViewModel
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="it-rating" content="it-rat-cd303c3f80473535b3c667d0d67a7a11">
+	<meta name="cmsmagazine" content="3f86e43372e678604d35804a67860df7">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+	<title>Glowify Beauty</title>
+	<meta name='description' content="" />
+	<meta name="keywords" content="" />
+	<link rel="icon" type="image/x-icon" href=@Url.Content("/Content/img/favicon.ico") />
+	<link rel="preload stylesheet" href=@Url.Content("/Content/css/style.css") as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="loaded">
+
+
+	<!-- BEGIN BODY -->
+
+	<div class="main-wrapper">
+
+		<!-- BEGIN CONTENT -->
+
+		<main class="content">
+			<!-- BEGIN MAIN BLOCK -->
+			<div class="main-block load-bg" style="padding: 5%; color: white;">
+				<div class="">
+					<div class="main-block__content">
+						<h1 class="main-text" style="color: white;"> <b> Beauty & Care </b></h1>
+						<p style="color:white; font-size:larger"> <strong> Invest in your skin. It is going to represent you for a very long time.</strong>
+						</p>
+						<a href='@Url.Action("Category","Home")' class="btn">Shop now</a>
+					</div>
+				</div>
+			<!-- BEGIN TRENDING -->
+			<section class="trending">
+			</div>
+			<!-- MAIN BLOCK EOF -->
+            <br />
+            <br />
+            <br />
+            <br />
+				<div class="trending-content">
+					<div class="trending-top">
+						<span class="saint-text">Cosmetics</span>
+						<h2>Trending products</h2>
+						<p>At Glowify Beauty, we believe that everyone deserves to shine.
+						</p>
+					</div>
+					<div class="tab-wrap trending-tabs">
+						<ul class="nav-tab-list tabs">
+							<li class="active">
+								<a href="#trending-tab_1">Make up</a>
+							</li>
+
+							<li>
+								<a href="#trending-tab_3">Lips</a>
+							</li>
+							<li>
+								<a href="#trending-tab_4">Nails</a>
+							</li>
+							<li>
+								<a href="#trending-tab_5">Skin care</a>
+							</li>
+							<li>
+								<a href="#trending-tab_6">Hair care</a>
+							</li>
+						</ul>
+						<div class="box-tab-cont">
+
+							<div class="tab-cont" id="trending-tab_1">
+								<div class="products-items">
+
+                                 @foreach (var item in Model.Makeup.Take(4))
+                {
+                                     String img64 = Convert.ToBase64String(item.Img1);
+                                     String img64Url = string.Format("data:image/" + item.Img1type + ";base64,{0}", img64);
+									<a href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })' class="products-item">
+										<div class="products-item__type">
+											<span class="products-item__new">new</span>
+										</div>
+										<div class="products-item__img">
+											<img src="@img64Url" class="js-img" alt="">
+											<div class="products-item__hover">
+<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })';">
+</i>												<div class="products-item__hover-options">
+													<i class="icon-heart"  onclick="window.location.href='@Url.Action("AddFavourite", "WishList", new { id = item.Product_Id })';"></i>
+													<i class="icon-cart"  onclick="window.location.href='@Url.Action("AddCart", "Cart", new { id = item.Product_Id })';"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">@item.ProductName</span>
+											<span class="products-item__cost">@item.ProductPrice /Rs</span>
+										</div>
+									</a>
+                                     }																		
+								</div>
+							</div>
+							
+							<div class="tab-cont hide" id="trending-tab_3">
+								<div class="products-items">
+
+                                                @foreach (var item in Model.Lips.Take(4))
+                {
+
+                    String img64 = Convert.ToBase64String(item.Img1);
+                    String img64Url = string.Format("data:image/" + item.Img1type + ";base64,{0}", img64);           
+									<a href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })' class="products-item">
+										<div class="products-item__type">
+											<span class="products-item__new">new</span>
+										</div>
+										<div class="products-item__img">
+											<img	src="@img64Url" class="js-img" alt="">
+											<div class="products-item__hover">
+<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })';">
+</i>												<div class="products-item__hover-options">
+													<i class="icon-heart"  onclick="window.location.href='@Url.Action("AddFavourite", "WishList", new { id = item.Product_Id })';"></i>
+													<i class="icon-cart"  onclick="window.location.href='@Url.Action("AddCart", "Cart", new { id = item.Product_Id })';"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">@item.ProductName</span>
+											<span class="products-item__cost">@item.ProductPrice /Rs</span>
+										</div>
+									</a>
+                                                }								
+								</div>
+							</div>
+
+							<div class="tab-cont hide" id="trending-tab_4">
+								<div class="products-items">
+                                    @foreach (var item in Model.Nails.Take(4))
+                                    {
+                                        String img64 = Convert.ToBase64String(item.Img1);
+                                        String img64Url = string.Format("data:image/" + item.Img1type + ";base64,{0}", img64);  
+									<a href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })' class="products-item">
+										<div class="products-item__type">
+											<span class="products-item__new">new</span>
+										</div>
+										<div class="products-item__img">
+											<img	src="@img64Url"  class="js-img" alt="">
+											<div class="products-item__hover">
+<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })';">
+</i>												<div class="products-item__hover-options">
+													<i class="icon-heart"  onclick="window.location.href='@Url.Action("AddFavourite", "WishList", new { id = item.Product_Id })';"></i>
+													<i class="icon-cart"  onclick="window.location.href='@Url.Action("AddCart", "Cart", new { id = item.Product_Id })';"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">@item.ProductName</span>
+											<span class="products-item__cost">@item.ProductPrice /Rs</span>
+										</div>
+									</a>
+									}
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_5">
+								<div class="products-items">
+                                    @foreach(var item in Model.Skincare.Take(4))
+                                    {
+                                        String img64 = Convert.ToBase64String(item.Img1);
+                                        String img64Url = string.Format("data:image/" + item.Img1type + ";base64,{0}", img64);  
+
+									<a href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })' class="products-item">
+										<div class="products-item__type">
+											<span class="products-item__new">new</span>
+										</div>
+										<div class="products-item__img">
+											<img	src="@img64Url" class="js-img" alt="">
+											<div class="products-item__hover">
+<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })';">
+</i>												<div class="products-item__hover-options">
+													<i class="icon-heart"  onclick="window.location.href='@Url.Action("AddFavourite", "WishList", new { id = item.Product_Id })';"></i>
+													<i class="icon-cart"  onclick="window.location.href='@Url.Action("AddCart", "Cart", new { id = item.Product_Id })';"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">  @item.ProductName</span>
+											<span class="products-item__cost">@item.ProductPrice /Rs</span>
+										</div>
+									</a>
+                                    }
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_6">
+								<div class="products-items">
+                                  @foreach (var item in Model.Haircare.Take(4))
+                {
+
+                    String img64 = Convert.ToBase64String(item.Img1);
+                    String img64Url = string.Format("data:image/" + item.Img1type + ";base64,{0}", img64);     
+									<a href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })' class="products-item">
+										<div class="products-item__type">
+											<span class="products-item__new">new</span>
+										</div>
+										<div class="products-item__img">
+											<img	src="@img64Url" class="js-img" alt="">
+											<div class="products-item__hover">
+<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("ProductDetails", "Home", new { id = item.Product_Id })';">
+</i>												<div class="products-item__hover-options">
+													<i class="icon-heart"  onclick="window.location.href='@Url.Action("AddFavourite", "WishList", new { id = item.Product_Id })';"></i>
+													<i class="icon-cart"  onclick="window.location.href='@Url.Action("AddCart", "Cart", new { id = item.Product_Id })';"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">@item.ProductName</span>
+											<span class="products-item__cost">@item.ProductPrice /Rs</span>
+										</div>
+									</a>
+                                  }
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+	
+			<div class="advantages">
+				<div class="wrapper">
+					<div class="advantages-items">
+						<div class="advantages-item">
+							<div class="advantages-item__icon">
+								<i class="icon-natural"></i>
+							</div>
+							<h4>natural</h4>
+							<p>Glowify Beauty celebrates the essence of nature in every product. We harness botanical ingredients to enhance your natural beauty, ensuring your skin feels as good as it looks. Experience skincare that's rooted in purity and simplicity.</p>
+						</div>
+						<div class="advantages-item">
+							<div class="advantages-item__icon">
+								<i class="icon-quality"></i>
+							</div>
+							<h4>Quality</h4>
+							<p>At Glowify, quality is our hallmark. Each product undergoes rigorous testing and careful formulation to ensure it meets the highest standards. When you choose Glowify, you're choosing reliable, top-tier skincare.</p>
+						</div>
+						<div class="advantages-item">
+							<div class="advantages-item__icon">
+								<i class="icon-organic"></i>
+							</div>
+							<h4>organic</h4>
+							<p>Glowify Beauty is committed to using organic ingredients. Our products are crafted without harmful chemicals, offering a clean, green approach to skincare. Discover the benefits of organic beauty with Glowify.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ADVANTAGES EOF   -->
+			<!-- BEGIN TOP CATEGORIES -->
+			<section class="top-categories">
+				<div class="top-categories__text">
+					<span class="saint-text">Popular collections</span>
+					<h2>top categories</h2>
+					<p>At Glowify Beauty, we believe that everyone deserves to shine.</p>
+				</div>
+				<div class="top-categories__items">
+					<a href='@Url.Action("Shop", "Home", new { Check = "Eyes" })' class="top-categories__item">
+						<img  src=@Url.Content("/Content/img/Eyes.jpg")
+							class="js-img" alt="">
+						<div class="top-categories__item-hover">
+							<h5 onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Eyes" })'">Eyes</h5>
+							<span >browse products -</span>
+        <i class="icon-arrow-lg" onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Eyes" })'"></i>						</div>
+					</a>
+					<a href='@Url.Action("Shop", "Home", new { Check = "Lips" })' class="top-categories__item">
+						<img src=@Url.Content("/Content/img/Lipstic.jpg")
+							class="js-img" alt="">
+						<div class="top-categories__item-hover">
+							<h5 onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Lips" })'">Lips</h5>
+							<span>browse products -</span>
+                    <i class="icon-arrow-lg" onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Lips" })'"></i>						</div>
+					</a>
+					<a href='@Url.Action("Shop", "Home", new { Check = "Makeup" })' class="top-categories__item">
+						<img  src=@Url.Content("/Content/img/Makeup.jpg")
+							class="js-img" alt="">
+						<div class="top-categories__item-hover">
+							<h5 onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Makeup" })'">Makeup</h5>
+							<span>browse products -</span>
+                <i class="icon-arrow-lg" onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Makeup" })'"></i>						</div>
+					</a>
+				</div>
+			</section>
+			<!-- TOP CATEGORIES EOF   -->
+			<!-- BEGIN INFO BLOCKS -->
+			<div class="info-blocks">
+				<div class="info-blocks__item js-img" >
+					<div class="wrapper">
+						<div class="info-blocks__item-img">
+							<img  src=@Url.Content("/Content/img/Skin.jpg")
+								class="js-img" alt="">
+						</div>
+						<div class="info-blocks__item-text">
+							<span class="saint-text">Check This Out</span>
+							<h2>new collection for delicate skin</h2>
+							<span class="info-blocks__item-descr">The Delicate Skin Collection is designed for individuals with sensitive skin, focusing on hypoallergenic, non-irritating, and fragrance-free products.</span>
+							<p>The collection features a gentle cleanser, hydrating toner, lightweight moisturizer, soothing serum, nourishing night cream, and broad-spectrum SPF protection. Key ingredients include aloe vera, chamomile extract, calendula extract, hyaluronic acid, and colloidal oatmeal, all known for their calming and hydrating properties.</p>
+							<a onclick="window.location.href='@Url.Action("Shop", "Home", new { Check = "Skin Care" })'" class="btn">Shop now</a>
+						</div>
+					</div>
+
+				</div>
+				<div class="info-blocks__item info-blocks__item-reverse js-img" >
+					<div class="wrapper">
+						<div class="info-blocks__item-img">
+							<img src=@Url.Content("/Content/img/Makeupgirl.gif")
+								class="js-img" alt="">
+							
+							<div class="info-blocks__item-img-overlay">
+								
+								
+							</div>
+						</div>
+						<div class="info-blocks__item-text">
+							<span class="saint-text">About Us</span>
+							<h2>Who we are</h2>
+							<span class="info-blocks__item-descr">At Glowify Beauty, we believe that everyone deserves to shine. Our mission is to empower you to embrace your unique beauty through high-quality, cruelty-free skincare and makeup products that bring out your inner glow. </span>
+							<p>Founded on the principles of inclusivity and sustainability, we are committed to offering a diverse range of products that cater to all skin tones and types. Our team is passionate about creating beauty solutions that are not only effective but also kind to the environment. With Glowify Beauty, you can trust that each product is crafted with care, using clean ingredients that nourish and enhance your natural beauty.</p>
+							<a href="#" class="info-blocks__item-link">
+								
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- INFO BLOCKS EOF   -->
+			<!-- BEGIN NEW ARRIVALS -->
+			<section class="arrivals">
+				<div class="trending-top">
+					<span class="saint-text">Cosmetics</span>
+					<h2>New arrivals</h2>
+					<p>At Glowify Beauty, we believe that everyone deserves to shine.</p>
+				</div>
+				<div class="products-items">
+					<a href='@Url.Action("Shop", "Home", new {  Check = "Eyes" })' class="products-item">
+                        <div class="products-item__info">
+							<span class="products-item__name">Eyes</span>
+							
+						</div>
+						
+						<div class="products-item__img">
+							<img  src=@Url.Content("/Content/img/Eyes.jpg")
+								class="js-img" alt="">
+							<div class="products-item__hover">
+									<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("Shop", "Home", new {  Check = "Eyes" })';">
+</i>
+								
+							</div>
+						</div>
+						
+					</a>
+					<a href='@Url.Action("Shop", "Home", new {  Check = "Maskara" })' class="products-item">
+						<div class="products-item__info">
+							<span class="products-item__name">Maskara</span>
+						</div>
+						<div class="products-item__img">
+							<img  src=@Url.Content("/Content/img/Maskara.jpg")
+								class="js-img" alt="">
+							<div class="products-item__hover">
+									<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("Shop", "Home", new {  Check = "Maskara" })';">
+</i>
+								
+							</div>
+						</div>
+						
+					</a>
+
+					<a href='@Url.Action("Shop", "Home", new {  Check = "Lips" })' class="products-item">
+						<div class="products-item__info">
+							<span class="products-item__name">Lips</span>
+						</div>
+						<div class="products-item__img">
+							<img src=@Url.Content("/Content/img/Lips.jpg")
+								class="js-img" alt="">
+							<div class="products-item__hover">
+	<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("Shop", "Home", new {  Check = "Lips" })';">
+</i>								
+							</div>
+						</div>
+						
+					</a>
+
+					<a href='@Url.Action("Shop", "Home", new {  Check = "Makeup" })' class="products-item">
+						<div class="products-item__info">
+							<span class="products-item__name">Cheeks</span>
+						</div>
+						<div class="products-item__img">
+							<img  src=@Url.Content("/Content/img/cheeks.jpg")
+								class="js-img" alt="">
+							<div class="products-item__hover">
+	<i class="icon-search" 
+   onclick="window.location.href='@Url.Action("Shop", "Home", new {  Check = "Makeup" })';">
+</i>								
+								
+							</div>
+						</div>
+						
+					</a>
+					
+				</div>
+			</section>
+            <br />
+            <br />
+            <br />
+            <br />
+
+			<!-- NEW ARRIVALS EOF   -->
+			<!-- BEGIN LATEST NEWS -->
+			<!-- LATEST NEWS EOF   -->
+			<!-- BEGIN SUBSCRIBE -->
+			
+			<!-- SUBSCRIBE EOF   -->
+			<!-- BEGIN INSTA PHOTOS -->
+			<!-- INSTA PHOTOS EOF   -->
+
+		</main>
+
+		<!-- CONTENT EOF   -->
+
+		<!-- BEGIN HEADER -->
+
+		<header class="header">
+		@{
+    var userRole = Session["roles"] as string; // Null check and type casting
+}
+
+			<div class="header-content" >
+				<div class="header-logo">
+					<img src=@Url.Content("/Content/img/header-logo.svg") style="margin-left:50px" alt="">
+				</div>
+				<div class="header-box">
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	<ul class="header-nav">
+						<li><a href='@Url.Action("HomePage","Home")'class="active">Home</a></li>
+						<li><a href='@Url.Action("Category","Home")'>Category</a></li>
+						<li><a href='@Url.Action("ContactUs","Home")'>contact</a></li>
+                 @if (userRole != null && userRole == "Admin")
+{
+                        <li><a href='@Url.Action("AdminDashboard","Admin")'>DashBoard</a></li>
+                    }
+					</ul>
+					<ul class="header-options" style="margin-right:50px">
+						<li><a href="#"><i class="icon-search"></i></a></li>
+                       
+                   
+@if (Session["Account_id"] == null)
+{
+    // If "Account_id" is null, show the sign-in icon
+    <li><a href='@Url.Action("SignIn","Accounts")'><i class="icon-user"></i></a></li>
+}
+
+                        
+
+						<li><a href='@Url.Action("ShowFavourite","WishList")'><i class="icon-heart"></i></a></li>
+						<li><a href='@Url.Action("ShowCart","Cart")'><i class="icon-cart"></i></a></li>
+                             @if (Session["Account_id"] != null)
+{ 
+    // If "Account_id" exists, show the user icon, not the sign-out icon
+    <li><a href='@Url.Action("Logout","Accounts")'><i class="fa fa-sign-in" style="font-size:30px"></i></a></li>
+}
+					</ul>
+				</div>
+
+				<div class="btn-menu js-btn-menu"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+			</div>
+		</header>
+
+		<!-- HEADER EOF   -->
+
+		<!-- BEGIN FOOTER -->
+
+		<footer class="footer">
+			<div class="wrapper">
+				<div class="footer-top">
+					<div class="footer-top__social">
+						<span>Find us here:</span>
+						<ul>
+							<li><a href="https://www.facebook.com/"><i class="icon-facebook"></i></a></li>
+							<li><a href="https://twitter.com/?lang=en"><i class="icon-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/"><i class="icon-insta"></i></a></li>
+							<li><a href="https://pk.linkedin.com/"><i class="icon-in"></i></a></li>
+						</ul>
+					</div>
+					<div class="footer-top__logo">
+						<img data-src=@Url.Content("/Content/img/footer-logo.svg") src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+							class="js-img" alt="">
+					</div>
+					<div class="footer-top__payments">
+						    
+						<ul>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="footer-nav">
+					
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Categories</span>
+						<ul>
+                                    <li><a href='@Url.Action("Shop", "Home", new {  Check = "Makeup" })'>Make up <span></span></a></li>
+                                    <li><a href='@Url.Action("Shop", "Home", new {  Check = "Eyes" })'>Eyes <span></span></a></li>
+                                    <li><a href='@Url.Action("Shop", "Home", new {  Check = "Purfume" })'>Perfume <span></span></a></li>
+                                    <li><a href='@Url.Action("Shop", "Home", new {  Check = "Lips" })'>Lips </a></li>
+                                    <li><a href='@Url.Action("Shop", "Home", new {  Check = "Skin Care" })'>Skin care <span></span></a></li>
+						</ul>
+					</div>
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Useful links</span>
+						<ul>
+							<li><a href='@Url.Action("HomePage","Home")'>Home</a></li>
+							<li><a href='@Url.Action("ShowCart","Cart")'>Cart</a></li>
+							<li><a href='@Url.Action("ShowFavourite","WishList")'>WhishList</a></li>
+							<li><a href='@Url.Action("Category","Home")'>Category</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Contact</span>
+						<ul>
+							<li><i class="icon-map-pin"></i> Islamabad, Pakistan</li>
+							<li>
+								<i class="icon-smartphone"></i>
+								<div class="footer-nav__col-phones">
+									<a href="tel:+13459971345">+9203360000000</a>
+									<a href="tel:+13457464975">+9203360000000</a>
+								</div>
+							</li>
+							<li><i class="icon-mail"></i><a href="mailto:info@beshop.com">glowifybeauty@beshop.com</a></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</footer>
+
+		<!-- FOOTER EOF   -->
+
+
+
+	</div>
+
+	<div class="icon-load"></div>
+
+	<!-- BODY EOF   -->
+
+	<script src=@Url.Content("/Content/js/jquery-3.5.1.min.js")></script>
+	<script src=@Url.Content("/Content/js/lazyload.min.js")></script>
+	<script src=@Url.Content("/Content/js/slick.min.js")></script>
+	<script src=@Url.Content("/Content/js/custom.js")></script>
+</body>
+
+</html>
